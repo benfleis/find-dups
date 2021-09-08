@@ -1,15 +1,19 @@
 {:paths ["src" "resources"]
- :deps {org.clojure/clojure {:mvn/version "1.10.3"}}
+ :deps {org.clojure/clojure {:mvn/version "1.10.3"}
+        org.clojure/data.json {:mvn/version "2.4.0"}
+        cli-matic/cli-matic {:mvn/version "0.4.3"}
+        digest/digest {:mvn/version "1.4.10"}}
  :aliases
  {:run-m {:main-opts ["-m" "benfleis.find-dups"]}
   :run-x {:ns-default benfleis.find-dups
-          :exec-fn greet
-          :exec-args {:name "Clojure"}}
+          :exec-fn -main
+          :exec-args {}}
   :test {:extra-paths ["test"]
          :extra-deps {org.clojure/test.check {:mvn/version "1.1.0"}
                       io.github.cognitect-labs/test-runner
                       {:git/url "https://github.com/cognitect-labs/test-runner"
-                       :sha "62ef1de18e076903374306060ac0e8a752e57c86"}}
+                       :git/tag "v0.5.0"
+                       :git/sha "b3fd0d2"}}
          :exec-fn cognitect.test-runner.api/test}
   :uberjar {:replace-deps {com.github.seancorfield/depstar {:mvn/version "2.1.278"}}
             :exec-fn hf.depstar/uberjar
